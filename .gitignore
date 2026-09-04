@@ -1,0 +1,14 @@
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+.venv311/
+.pytest_cache/
+.env
+*.egg-info/
+
+# Modelo treinado é gerado localmente/no worker de treino, não versionado.
+app/ml/artifacts/*.pt
+
+.vscode/
+.idea/

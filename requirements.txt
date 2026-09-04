@@ -1,0 +1,21 @@
+fastapi==0.115.0
+uvicorn[standard]==0.30.6
+sqlalchemy==2.0.35
+psycopg[binary]==3.2.2
+alembic==1.13.2
+pydantic==2.9.2
+pydantic-settings==2.5.2
+email-validator==2.3.0
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+# bcrypt >=4.1 removeu bcrypt.__about__ e passou a validar estritamente o
+# limite de 72 bytes, o que quebra a detecção de versão/self-test do passlib
+# 1.7.4 (não mantido). Fixado em 4.0.1, a última versão compatível.
+bcrypt==4.0.1
+python-multipart==0.0.9
+boto3==1.35.24
+opencv-python-headless==4.10.0.84
+scikit-image==0.24.0
+scipy==1.14.1
+numpy==1.26.4
+torch==2.4.1
