@@ -32,7 +32,7 @@ class AnalysisProject(UUIDPKMixin, TimestampMixin, Base):
     species: Mapped[str] = mapped_column(String(120), nullable=False, default="Nannochloropsis")
 
     status: Mapped[ProjectStatus] = mapped_column(
-        SAEnum(ProjectStatus, name="project_status_enum"),
+        SAEnum(ProjectStatus, name="project_status_enum", values_callable=lambda enum_cls: [item.value for item in enum_cls]),
         default=ProjectStatus.ACTIVE,
         nullable=False,
     )
