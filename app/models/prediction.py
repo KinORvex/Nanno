@@ -39,7 +39,7 @@ class Prediction(UUIDPKMixin, TimestampMixin, Base):
 
     # Reaproveita o MESMO tipo Postgres "trend_metric_enum" já existente.
     metric: Mapped[TrendMetric] = mapped_column(
-        SAEnum(TrendMetric, name="trend_metric_enum"),
+        SAEnum(TrendMetric, name="trend_metric_enum", values_callable=lambda enum_cls: [item.value for item in enum_cls]),
         nullable=False,
     )
     predicted_value: Mapped[float] = mapped_column(Float, nullable=False)
