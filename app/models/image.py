@@ -58,7 +58,7 @@ class MicroalgaeImage(UUIDPKMixin, TimestampMixin, Base):
 
     # --- Status do pipeline de análise ---
     processing_status: Mapped[ProcessingStatus] = mapped_column(
-        SAEnum(ProcessingStatus, name="processing_status_enum"),
+        SAEnum(ProcessingStatus, name="processing_status_enum", values_callable=lambda enum_cls: [item.value for item in enum_cls]),
         default=ProcessingStatus.PENDING,
         nullable=False,
         index=True,
