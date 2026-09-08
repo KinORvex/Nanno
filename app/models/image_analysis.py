@@ -57,7 +57,7 @@ class ImageAnalysis(UUIDPKMixin, TimestampMixin, Base):
     # Reaproveita o MESMO tipo Postgres "processing_status_enum" já criado
     # pela migration original de MicroalgaeImage (ver migration desta etapa).
     status: Mapped[ProcessingStatus] = mapped_column(
-        SAEnum(ProcessingStatus, name="processing_status_enum"),
+        SAEnum(ProcessingStatus, name="processing_status_enum", values_callable=lambda enum_cls: [item.value for item in enum_cls]),
         default=ProcessingStatus.PENDING,
         nullable=False,
         index=True,
