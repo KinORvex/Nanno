@@ -61,7 +61,7 @@ class DigitalTwinState(UUIDPKMixin, TimestampMixin, Base):
     growth_state: Mapped[Optional[str]] = mapped_column(String(30), nullable=True)
 
     health_status: Mapped[HealthStatus] = mapped_column(
-        SAEnum(HealthStatus, name="health_status_enum"),
+        SAEnum(HealthStatus, name="health_status_enum", values_callable=lambda enum_cls: [item.value for item in enum_cls]),
         default=HealthStatus.UNKNOWN,
         nullable=False,
     )
