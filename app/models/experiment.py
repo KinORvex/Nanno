@@ -42,7 +42,7 @@ class Experiment(UUIDPKMixin, TimestampMixin, Base):
     hypothesis: Mapped[Optional[str]] = mapped_column(Text, nullable=True)
 
     status: Mapped[ExperimentStatus] = mapped_column(
-        SAEnum(ExperimentStatus, name="experiment_status_enum"),
+        SAEnum(ExperimentStatus, name="experiment_status_enum", values_callable=lambda enum_cls: [item.value for item in enum_cls]),
         default=ExperimentStatus.PLANNING,
         nullable=False,
     )
