@@ -43,7 +43,7 @@ class TrendEstimate(UUIDPKMixin, TimestampMixin, Base):
     )
     project: Mapped["AnalysisProject"] = relationship(back_populates="trend_estimates")  # noqa: F821
 
-     metric: Mapped[TrendMetric] = mapped_column(
+        metric: Mapped[TrendMetric] = mapped_column(
         SAEnum(TrendMetric, name="trend_metric_enum", values_callable=lambda enum_cls: [item.value for item in enum_cls]), nullable=False
     )
     direction: Mapped[TrendDirection] = mapped_column(
